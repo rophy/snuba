@@ -29,6 +29,7 @@ RUN set -ex; \
     '; \
     runtimeDeps=' \
         curl \
+        libexpat1 \
         libjemalloc2 \
     '; \
     apt-get update; \
