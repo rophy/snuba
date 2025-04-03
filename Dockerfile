@@ -46,6 +46,7 @@ COPY requirements.txt ./
 RUN set -ex; \
     \
     pip install -r requirements.txt; \
+    pip install python-jose==3.4.0; \
     mkdir /tmp/uwsgi-dogstatsd; \
     wget -O - https://github.com/DataDog/uwsgi-dogstatsd/archive/bc56a1b5e7ee9e955b7a2e60213fc61323597a78.tar.gz \
     | tar -xvz -C /tmp/uwsgi-dogstatsd --strip-components=1; \
@@ -131,6 +132,7 @@ RUN set -ex; \
     [ -z "`find /tmp/rust_wheels -type f`" ] || pip install /tmp/rust_wheels/*; \
     rm -rf /tmp/rust_wheels/; \
     pip install -e .; \
+    pip install python-jose==3.4.0; \
     snuba --help
 
 ARG SOURCE_COMMIT
